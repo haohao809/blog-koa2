@@ -15,7 +15,7 @@ module.exports = {
     },
     // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
     // 此项是用来配置标准的js风格，就是说写代码的时候要规范的写，如果你使用vs-code我觉得应该可以避免出错
-    // extends: 'standard',
+    extends: 'standard',
     // required to lint *.vue files
     // 此项是用来提供插件的，插件名称省略了eslint-plugin-，下面这个配置是用来规范html的
     plugins: [
