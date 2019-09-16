@@ -12,7 +12,6 @@
     "babel-eslint": "^10.0.3",
     "cross-env": "^5.2.1",
     "debug": "^4.1.1",
-    "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-vue": "^5.2.3",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
@@ -29,6 +28,13 @@
     "redis": "^2.8.0"
   },
   "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "nodemon": "^1.19.1"
   }
 }
