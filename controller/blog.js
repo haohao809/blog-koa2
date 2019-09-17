@@ -1,6 +1,6 @@
 const xss = require('xss')
 const { exec } = require('../db/mysql')
-
+// 获取博客列表
 const getList = async (author, keyword) => {
   let sql = 'select * from blogs where 1=1'
   if (author) {
@@ -13,11 +13,28 @@ const getList = async (author, keyword) => {
 
   return await exec(sql)
 }
+// 获取博客详情
 const getDetail = async (id) => {
   const sql = `select * from blogs where id = '${id}'`
   const rows = await exec(sql)
   return rows[0]
 }
+// 新建博客
+const newBlog = async (blogData = {}) => {
+  const title = xss(blogData.title)
+  const content = xss(blogData.content)
+  const author = blogData.author
+  const createTime = Date.now()
+
+  const sql = `insert into blogs (title, content, createtime, author) values ('${title}','${content}',${createTime},'${author}')`
+  const insertData = await exec(sql)
+
+  return {
+    id: insertData.insertId
+  }
+}
 module.exports = {
-  getList
+  getList,
+  getDetail,
+  newBlog
 }
