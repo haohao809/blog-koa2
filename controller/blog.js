@@ -15,7 +15,7 @@ const getList = async (author, keyword) => {
 }
 // 获取博客详情
 const getDetail = async (id) => {
-  const sql = `select * from blogs where id = '${id}'`
+  const sql = `select * from blogs where id = '${id}';`
   const rows = await exec(sql)
   return rows[0]
 }
@@ -26,7 +26,7 @@ const newBlog = async (blogData = {}) => {
   const author = blogData.author
   const createTime = Date.now()
 
-  const sql = `insert into blogs (title, content, createtime, author) values ('${title}','${content}',${createTime},'${author}')`
+  const sql = `insert into blogs (title, content, createtime, author) values ('${title}','${content}',${createTime},'${author}');`
   const insertData = await exec(sql)
 
   return {
@@ -37,9 +37,18 @@ const newBlog = async (blogData = {}) => {
 const updateBlog = async (id, blogData = {}) => {
   const title = xss(blogData.title)
   const content = xss(blogData.content)
-  const sql = `update blogs set title = '${title}', content = '${content}' where id = '${id}'`
+  const sql = `update blogs set title = '${title}', content = '${content}' where id = '${id}';`
   const updateData = await exec(sql)
   if (updateData.affectedRows > 0) {
+    return true
+  }
+  return false
+}
+// 删除博客
+const delBlog = async (id, author) => {
+  const sql = `delete from blogs where id = '${id}' and author='${author}';`
+  const delData = await exec(sql)
+  if (delData.affectedRows > 0) {
     return true
   }
   return false
@@ -48,5 +57,6 @@ module.exports = {
   getList,
   getDetail,
   updateBlog,
-  newBlog
+  newBlog,
+  delBlog
 }
