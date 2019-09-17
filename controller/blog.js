@@ -13,6 +13,11 @@ const getList = async (author, keyword) => {
 
   return await exec(sql)
 }
+const getDetail = async (id) => {
+  const sql = `select * from blogs where id = '${id}'`
+  const rows = await exec(sql)
+  return rows[0]
+}
 module.exports = {
   getList
 }
