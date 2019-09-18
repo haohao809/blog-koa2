@@ -9,6 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@types/node": "^12.7.5",
     "babel-eslint": "^10.0.3",
     "cross-env": "^5.2.1",
     "debug": "^4.1.1",

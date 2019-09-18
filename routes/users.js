@@ -8,8 +8,8 @@ router.post('/login', async function (ctx, next) {
   const loginData = await login(username, password)
 
   if (loginData.username) {
-    ctx.session.username = data.username
-    ctx.session.realname = data.realname
+    ctx.session.username = loginData.username
+    ctx.session.realname = loginData.realname
 
     ctx.body = new SuccessModel()
     return
