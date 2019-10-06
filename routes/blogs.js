@@ -5,7 +5,7 @@ const loginCheck = require('../middleware/loginCheck')
 
 router.prefix('/api/blogs')
 // 路由获取博客列表
-router.get('/list', async function (ctx, next) {
+router.get('/list', loginCheck, async function (ctx, next) {
   let author = ctx.query.author || ''
   const keyword = ctx.query.keyword || ''
   if (ctx.query.isadmin) {

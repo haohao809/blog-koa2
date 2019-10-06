@@ -12,6 +12,21 @@ const login = async (username, password) => {
 
   return rows[0] || {}
 }
+
+const register = async (username, password, realname) => {
+  username = escape(username)
+  realname = escape(realname)
+  password = genpassword(password)
+
+  password = escape(password)
+  const sql = `insert into users (username, password, realname) values ( ${username},${password},${realname});`
+  const insertData = await exec(sql)
+
+  return {
+    id: insertData.insertId
+  }
+}
 module.exports = {
-  login
+  login,
+  register
 }
