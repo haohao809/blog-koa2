@@ -38,7 +38,7 @@ app.use(async (ctx, next) => {
 app.keys = ['werdsf21$#']
 app.use(session({
   // 配置cookie
-  cookies: {
+  cookie: {
     path: '/',
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000
