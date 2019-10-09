@@ -26,7 +26,13 @@ const register = async (username, password, realname) => {
     id: insertData.insertId
   }
 }
+const checkuser = async () => {
+  const sql = 'select * from users;'
+  const rows = await exec(sql)
+  return rows
+}
 module.exports = {
   login,
-  register
+  register,
+  checkuser
 }

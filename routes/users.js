@@ -1,5 +1,5 @@
 const router = require('koa-router')()
-const { login, register } = require('../controller/users')
+const { login, register, checkuser } = require('../controller/users')
 const { SuccessModel, ErrorModel } = require('../model/resModel')
 router.prefix('/api/users')
 // 登录路由
@@ -27,5 +27,10 @@ router.post('/register', async function (ctx, next) {
     return
   }
   ctx.body = new ErrorModel('注册失败')
+})
+// 查询注册用户信息
+router.get('/checkuser', async function (ctx, next) {
+  const userdata = await checkuser()
+  ctx.body = new SuccessModel(userdata)
 })
 module.exports = router
