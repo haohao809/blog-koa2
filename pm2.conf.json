@@ -1,0 +1,14 @@
+{
+    "apps": {
+        "name": "pm2-koa-server",
+        "script": "bin/www",
+        "watch": true,
+        "ignore_watch": ["node_modules","logs"],
+        "instances": 4,
+        "error_files": "logs/err.log",
+        "out_files": "logs/out.log",
+        "log_date_format": "YYYY-MM-DD HH:mm:ss"
+
+    }
+
+}
